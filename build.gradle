@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6' 
+
+dependencies {
+	compile(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.1.4')
+    compile("org.springframework.boot:spring-boot-starter-web:0.5.0.BUILD-SNAPSHOT")
+}
+repositories {
+	mavenCentral()
+    maven {url 'http://repo.spring.io/snapshot'}
+	maven {url 'http://maven.springframework.org/milestone'}
+}
+
+sourceSets{
+    testUtil{
+        java {
+            srcDir "src/main/java"
+            include "util/**"
+        }
+    }
+}
