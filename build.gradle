@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'spring-boot'
 
 sourceCompatibility = '1.6'
 targetCompatibility = '1.6' 
@@ -9,9 +10,20 @@ dependencies {
 	compile(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.1.4')
     compile("org.springframework.boot:spring-boot-starter-web:0.5.0.BUILD-SNAPSHOT")
 }
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.BUILD-SNAPSHOT")
+    }
+}
+
 repositories {
 	mavenCentral()
     maven {url 'http://repo.spring.io/snapshot'}
+	maven {url 'http://repo.spring.io/milestone'}
 	maven {url 'http://maven.springframework.org/milestone'}
 }
 
